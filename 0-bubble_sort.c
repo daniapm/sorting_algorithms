@@ -14,6 +14,16 @@ void bubble_sort(int *array, size_t size)
 	size_t i, j;
 	int orden = 0;
 
+	if (size < 2)
+	{
+		return;
+	}
+
+	if (array == NULL)
+	{
+		return;
+	}
+
 /* Repita mientras haya intercambio*/
 	while (orden == 0)
 	{
