@@ -14,16 +14,6 @@ void selection_sort(int *array, size_t size)
 	/*avanzar la posición a través de toda la matriz */
 	size_t i, j, position, swap;
 
-	if (size < 2)
-	{
-		return;
-	}
-
-	if (array == NULL)
-	{
-		return;
-	}
-
 	if (array != NULL && size > 2)
 	{
 		/*encuentra el elemento min en el sin clasificar a [i .. aLength-1] */
@@ -48,4 +38,6 @@ void selection_sort(int *array, size_t size)
 			}
 		}
 	}
+	return;
+
 }
