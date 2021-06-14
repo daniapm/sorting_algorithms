@@ -1,6 +1,6 @@
 # Sorting algorithms & Big O 💻
 
-In this project we implemente several sorting algorithms using the C programming language, these programs can sort arrays of integers and linked lists containing an integer.
+In this project we implemented several sorting algorithms using the C programming language, these programs can sort arrays of integers and linked lists containing an integer.
 
 # File descriptions 📁
 
