@@ -16,11 +16,13 @@ void quick_sort(int *array, size_t size)
 	lw = 0;
 	hi = size - 1;
 
-	if (array != NULL && size > 2)
+	if (array != NULL || size < 2)
 	{
+		return;
+	}
 
 	_quick_sort(array, lw, hi, size);
-	}
+
 }
 
 /**
