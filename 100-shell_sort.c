@@ -30,17 +30,11 @@ void shell_sort(int *array, size_t size)
 			/* Encuentra la posición actual donde se debe insertar el elemento*/
 			while (end >= 0 && array[end] > key)
 			{
-				if (array[end + gap] != array[end])
-				{
-					array[end + gap] = array[end];
-					end -= gap;
-				}
+				array[end + gap] = array[end];
+				end -= gap;
 			}
 			/*Inserte el elemento*/
-			if (array[end + gap] != key)
-			{
-				array[end + gap] = key;
-			}
+			array[end + gap] = key;
 		}
 		print_array(array, size);
 	}
