@@ -11,30 +11,28 @@
 
 void shell_sort(int *array, size_t size)
 {
-	int gap = size;
-	size_t i;
+	unsigned int i = 0, j = 0, gap = 0;
+	int key = 0, end = 0;
 
-	if (array == NULL || size < 2)
-		return;
-
-	while (gap > 1)
+	if (array != NULL || size < 2)
 	{
-		gap = gap / 3 + 1;
+
+	while (gap < size / 3)
+		gap = gap * 3 + 1;
+
 	for (; gap > 0; gap = (gap - 1) / 3)
 	{
-		for (i = gap; i < size; ++i)
+		for (i = gap; i < size; i++)
 		{
-			int key = array[i];
-			int end = i - gap;
-
-			/* Encuentra la posición actual donde se debe insertar el elemento*/
-			while (end >= 0 && array[end] > key)
+			key = array[i];
+			j = i;
+			for (; j >= gap && array[j - gap] > key;
+					j -= gap)
 			{
-				array[end + gap] = array[end];
-				end -= gap;
+				end = j - gap;
+				array[j] = array[end];
 			}
-			/*Inserte el elemento*/
-			array[end + gap] = key;
+				array[j] = key;
 		}
 		print_array(array, size);
 	}
