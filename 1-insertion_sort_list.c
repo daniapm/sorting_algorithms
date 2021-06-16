@@ -10,13 +10,12 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	int n;
 	listint_t *cur;
 
-	cur = *list;
-
-	if (cur->next == NULL) /*solo hay un elemento en la lista*/
+	if (!list || !(*list)->next)
 		return;
+	
+	cur = *list;
 
 	listint_t *ptr, *tmp;
 
@@ -24,36 +23,46 @@ void insertion_sort_list(listint_t **list)
 
 	while (cur != NULL)
 	{
-		n = 0;
 		ptr = cur;
-		tmp = cur->prev;
 		cur = cur->next; /*hasta el final de la lista*/
 
-		while (tmp != NULL && tmp->n > ptr->n) /*empezamos a comparar*/
+		if (ptr->n < ptr->prev->n)
 		{
-			n++;
-			tmp = tmp->prev;
-		}
-		if (n)
-		{
-			ptr->prev->next = ptr->next;
-			if (ptr->next !=  NULL)
-			ptr->next->prev = ptr->prev;
-			if (tmp == NULL) /*este es el nodo mas pequeño*/
+			tmp = ptr->prev;
+			while (tmp != NULL && tmp->n > ptr->n) /*empezamos a comparar*/
 			{
-				tmp = *list;
-				ptr->prev = NULL;
-				ptr->next = tmp;
-				ptr->next->prev = ptr;
-				*list = ptr;
-			}
-			else
-			{
-				tmp = tmp->next;
-				tmp->prev->next = ptr;
-				ptr->prev = tmp->prev;
-				tmp->prev = ptr;
-				ptr->next = tmp;
+				printf("while: temp = %d, ptr = %d\n", tmp->n, ptr->n);
+			
+				tmp->next = ptr->next;
+				printf("temp->next = %d\n", tmp->next->n);
+				if (ptr->next !=  NULL)
+				{
+					ptr->next->prev = ptr->prev;
+					printf("ptr->next->prev->n = %d\n", ptr->next->prev->n);
+				}
+				if (tmp->prev == NULL) /*este es el nodo mas pequeño*/
+				{
+					tmp = *list;
+					ptr->prev = NULL;
+					ptr->next = tmp;
+					ptr->next->prev = ptr;
+					*list = ptr;
+					print_list(*list);
+				}
+				else
+				{	
+					
+					tmp = tmp->next;
+					tmp->prev->next = ptr;
+					printf("tmp->prev->next->n = %d\n", tmp->prev->next->n);
+					ptr->prev = tmp->prev;
+					printf("ptr->prev->n = %d\n", ptr->prev->n);
+					tmp->prev = ptr;
+					ptr->next = tmp;
+					print_list(*list);
+				}
+				tmp = tmp->prev;	
+
 			}
 		}
 	}
