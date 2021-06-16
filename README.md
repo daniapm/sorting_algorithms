@@ -7,6 +7,7 @@ In this project we implemented several sorting algorithms using the C programmin
 | File          | Data Type     | Big O |
 | ------------- |-------------  | ----- |
 | [0-bubble_sort.c](https://github.com/daniapm/sorting_algorithms/blob/master/0-bubble_sort.c) | Array | [0-O](https://github.com/daniapm/sorting_algorithms/blob/master/0-O) |
+| [1-insertion_sort_list.c](https://github.com/daniapm/sorting_algorithms/blob/master/1-insertion_sort_list.c) | Doubly linked-list | [1-O](https://github.com/daniapm/sorting_algorithms/blob/master/1-O) |
 | [2-selection_sort.c](https://github.com/daniapm/sorting_algorithms/blob/master/2-selection_sort.c) | Array | [2-O](https://github.com/daniapm/sorting_algorithms/blob/master/2-O) |
 | [3-quick_sort.c](https://github.com/daniapm/sorting_algorithms/blob/master/3-quick_sort.c) | Array | [3-O](https://github.com/daniapm/sorting_algorithms/blob/master/3-O) |
 
