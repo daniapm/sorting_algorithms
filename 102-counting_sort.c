@@ -13,7 +13,7 @@ void counting_sort(int *array, size_t size)
 {
 int i;
 size_t k;
-int *count_arr;
+int *count_arr, *arr1;
 
 int x = array[0];
 for (k = 1; k < size; k++)
@@ -40,7 +40,7 @@ for (i = 1; i <= x; i++)
 }
 count_arr[i] += count_arr[i - 1];
 printf("%d\n", count_arr[i - 1]);
-int *arr1 = malloc(sizeof(int) * size);
+arr1 = malloc(sizeof(int) * size);
 for (i = size - 1; i >= 0; i--)
 {
 	arr1[count_arr[array[i]] - 1] = array[i];
