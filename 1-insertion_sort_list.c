@@ -10,50 +10,42 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	int n;
-	listint_t *cur;
+	listint_t *cur, *ptr, *tmp;
 
-	cur = *list;
-
-	if (cur->next == NULL) /*solo hay un elemento en la lista*/
+	if (!list || !(*list)->next)
 		return;
-
-	listint_t *ptr, *tmp;
-
+	cur = *list;
 	cur = cur->next;
-
 	while (cur != NULL)
 	{
-		n = 0;
 		ptr = cur;
-		tmp = cur->prev;
 		cur = cur->next; /*hasta el final de la lista*/
-
-		while (tmp != NULL && tmp->n > ptr->n) /*empezamos a comparar*/
+		if (ptr->n < ptr->prev->n)
 		{
-			n++;
-			tmp = tmp->prev;
-		}
-		if (n)
-		{
-			ptr->prev->next = ptr->next;
-			if (ptr->next !=  NULL)
-			ptr->next->prev = ptr->prev;
-			if (tmp == NULL) /*este es el nodo mas pequeño*/
+			tmp = ptr->prev;
+			while (tmp != NULL && tmp->n > ptr->n) /*empezamos a comparar*/
 			{
-				tmp = *list;
-				ptr->prev = NULL;
-				ptr->next = tmp;
-				ptr->next->prev = ptr;
-				*list = ptr;
-			}
-			else
-			{
-				tmp = tmp->next;
-				tmp->prev->next = ptr;
-				ptr->prev = tmp->prev;
-				tmp->prev = ptr;
-				ptr->next = tmp;
+				tmp->next = ptr->next;
+				if (ptr->next !=  NULL)
+					ptr->next->prev = ptr->prev;
+				if (tmp->prev == NULL) /*este es el nodo mas pequeño*/
+				{
+					ptr->prev = NULL;
+					ptr->next = tmp;
+					ptr->next->prev = ptr;
+					*list = ptr;
+					print_list(*list);
+					break;
+				}
+				else
+				{
+					tmp->prev->next = ptr;
+					ptr->prev = tmp->prev;
+					tmp->prev = ptr;
+					ptr->next = tmp;
+					print_list(*list);
+				}
+				tmp = tmp->prev->prev;
 			}
 		}
 	}
