@@ -31,10 +31,10 @@ void shell_sort(int *array, size_t size)
 					j -= gap)
 			{
 				end = j - gap;
-				if (array[j] != array[end])
-					array[j] = array[end];
+				array[j] = array[end];
 			}
-				array[j] = key;
+				if (array[j] != key)
+					array[j] = key;
 		}
 		print_array(array, size);
 	}
