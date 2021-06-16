@@ -11,7 +11,6 @@
 
 void counting_sort(int *array, size_t size)
 {
-int *arr1 = malloc(sizeof(size));
 int i;
 size_t k;
 int *count_arr;
@@ -22,8 +21,7 @@ for (k = 1; k < size; k++)
 if (array[k] > x)
 	x = array[k];
 }
-
-count_arr =  malloc(sizeof(size));
+count_arr =  malloc(sizeof(int) *  (x + 1));
 
 for (i = 0; i <= x; ++i)
 {
@@ -42,6 +40,7 @@ for (i = 1; i <= x; i++)
 }
 count_arr[i] += count_arr[i - 1];
 printf("%d\n", count_arr[i - 1]);
+int *arr1 = malloc(sizeof(int) * size);
 for (i = size - 1; i >= 0; i--)
 {
 	arr1[count_arr[array[i]] - 1] = array[i];
